@@ -22,18 +22,18 @@ return array(
 //    'DB_USER'   => 'jd_admin',      // 用户名
 //    'DB_PWD'    => 'jd_2017',    // 密码
 //    'DB_PORT'   => '3306',      // 端口
-//    'DB_TYPE' => 'mysql', // 数据库类型
-//    'DB_HOST' => 'localhost', // 服务器地址
-//    'DB_NAME' => 'fatego', // 数据库名
-//    'DB_USER' => 'root', // 用户名
-//    'DB_PWD' => 'xiaoLong17', // 密码
-//    'DB_PORT' => '3306', // 端口
     'DB_TYPE' => 'mysql', // 数据库类型
-    'DB_HOST' => '120.77.172.148', // 服务器地址
+    'DB_HOST' => 'localhost', // 服务器地址
     'DB_NAME' => 'fatego', // 数据库名
     'DB_USER' => 'root', // 用户名
-    'DB_PWD' => 'root', // 密码
+    'DB_PWD' => 'xiaoLong17', // 密码
     'DB_PORT' => '3306', // 端口
+//    'DB_TYPE' => 'mysql', // 数据库类型
+//    'DB_HOST' => '120.77.172.148', // 服务器地址
+//    'DB_NAME' => 'fatego', // 数据库名
+//    'DB_USER' => 'root', // 用户名
+//    'DB_PWD' => 'root', // 密码
+//    'DB_PORT' => '3306', // 端口
     // 模板解析设置
     'TMPL_PARSE_STRING' => array(
         '__PUBLIC__' => '/Public',
