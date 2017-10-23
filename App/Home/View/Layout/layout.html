@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>首页</title>
+        <link type="text/css" rel="stylesheet" href="__HOME__/css/bootstrap.css" />
+        <script type="text/javascript" src="__HOME__/js/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="__HOME__/css/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <link type="text/css" rel="stylesheet" href="__HOME__/css/styles.css" />
+        <link type="text/css" rel="stylesheet" href="__HOME__/css/animate.min.css" />
+        <script src="js/wow.min.js"></script>
+        <script type="text/javascript" src="__HOME__/js/wow.min.js"></script>
+        <script>
+            new WOW().init();
+        </script>
+    </head>
+    <body>
+        <div class="header head">
+            <div class="container">
+                <div class="logo animated wow pulse" data-wow-duration="1000ms" data-wow-delay="500ms">
+                    <h1><a href="index.html"><span>F</span><img src="__HOME__/images/a.png" alt="">te/Gr<img src="__HOME__/images/a.png" alt="">nd Order</a></h1>
+                </div>
+                <div class="nav-icon">		
+                    <a href="#" class="navicon"></a>
+                    <div class="toggle">
+                        <ul class="toggle-menu">
+                            <li><a class="active" href="{:U('Index/index')}">首页</a></li>
+                            <li><a  href="{:U('Servant/servant')}">英灵</a></li>
+                            <li><a  href="{:U('Mysticode/mysticode')}">礼装</a></li>
+                            <li><a  href="{:U('Material/material')}">素材</a></li>
+                            <li><a  href="{:U('Master/master')}">个人中心</a></li>
+                            <li><a  href="{:U('Login/login')}">登录</a></li>
+                        </ul>
+                    </div>
+                    <script>
+                        $('.navicon').on('click', function (e) {
+                            e.preventDefault();
+                            $(this).toggleClass('navicon--active');
+                            $('.toggle').toggleClass('toggle--active');
+                        });
+                    </script>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!--主体内容-->
+        {__CONTENT__}
+        <!--主体内容 end-->  
+        <!--footer-->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-head">
+                    <div class="col-md-8 footer-top animated wow fadeInRight" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <ul class=" in">
+                            <li><a href="index.html">首页</a></li>
+                            <li><a  href="menu.html">英灵</a></li>
+                            <li><a  href="blog.html">素材</a></li>
+                            <li><a  href="events.html">礼装</a></li>
+                            <li><a  href="contact.html">帮助</a></li>
+                        </ul>					
+                        <span>这里是底部，还没决定要写什么</span>
+                    </div>
+                    <div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <h2>加入我们吧</h2>
+                        <label><i class="glyphicon glyphicon-menu-up"></i></label>
+                        <p>佛言：人有众过，而不自悔、顿息其心，罪来赴身；如水归海，渐成深广。若人有过，自解知非，改恶行善，罪自消灭；如病得汗，渐有痊损耳。</p>
+                        <ul class="social-ic">
+                            <li><a href="#"><i></i></a></li>
+                            <li><a href="#"><i class="ic"></i></a></li>
+                            <li><a href="#"><i class="ic1"></i></a></li>
+                            <li><a href="#"><i class="ic2"></i></a></li>
+                            <li><a href="#"><i class="ic3"></i></a></li>
+                        </ul>
+
+                    </div>
+                    <div class="clearfix"> </div>
+
+                </div>
+                <p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">Copyright &copy; 2016.Company name All rights reserved.</p>
+            </div>
+        </div>		
+        <!--//footer-->
+    </body>
+</html>
