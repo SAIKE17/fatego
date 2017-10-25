@@ -20,7 +20,8 @@ class BaseController extends Controller {
      * 初始化
      */
     public function _initialize() {
-        $this->uid = session(C('SESSION_PREFIX') . 'uid');
+        $this->uid = session('admin_id') ? session('admin_id') : null;
+        $this->user = session('admin_name') ? session('admin_name') : null;
         if (null == $this->uid) { // 用户未登录
             redirect('/admin.php/Login/login');
         }
@@ -31,8 +32,6 @@ class BaseController extends Controller {
             redirect('/admin.php/Login/login');
         }
 
-        // 已登录且未超时
-        $this->user = json_decode(session(C('SESSION_PREFIX') . 'user'), true);
         // 刷新缓存时间
         session(C('SESSION_PREFIX') . 'expire', time() + 3600); // 有效期一个小时
     }

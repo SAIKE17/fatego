@@ -59,6 +59,13 @@
     <script src="__HOME__/js/bootstrap.min.js"></script>
     <script src="__HOME__/js/plugins/layer/layer.min.js"></script>
     <script type="text/javascript">
+        
+        document.onkeydown=function(e){
+            e = e || event;
+            if (e.keyCode == 13) { // 回车键
+                doSubmit();
+            }
+        };
 
         function doSubmit() {
             var user_name = $('input[name=name]').val();
