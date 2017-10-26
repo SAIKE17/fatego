@@ -2,8 +2,11 @@
 
 namespace Admin\Controller;
 
-use Think\Controller;
-
+/**
+ * Description of OrderController
+ * 首页控制器
+ * @author SAIKE
+ */
 class IndexController extends BaseController {
 
     public function index() {

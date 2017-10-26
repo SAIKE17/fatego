@@ -45,7 +45,7 @@ i.glyphicon.glyphicon-menu-hamburger {
     background:url(../images/header.jpg) no-repeat left;
     width:100%;
     background-size:cover;
-    min-height:750px;
+    min-height:980px;
     display:block;
     padding-top: 1em;
 }
@@ -2058,7 +2058,7 @@ body{
 
 .toggle {
     display: block;
-    margin: 20px auto;
+    margin: 130px auto;
     width: 30%;
     background-color:rgb(54, 111, 214);
     padding: 15px;
