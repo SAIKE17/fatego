@@ -26,6 +26,9 @@ define('BIND_MODULE','Admin');
 // 绑定Home模块到当前入口文件 
 //define('BIND_MODULE','Home');
 
+// 定义根目录
+define('ROOT_PATH', __DIR__);
+
 // 定义运行时目录
 define('RUNTIME_PATH','./Runtime/');
 

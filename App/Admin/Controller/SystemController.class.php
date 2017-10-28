@@ -9,6 +9,10 @@ class SystemController extends BaseController {
     public function admin_list() {
         echo 'alala-lsi';
     }
+    
+    public function test(){
+        $this->display();
+    }
 
 }
 

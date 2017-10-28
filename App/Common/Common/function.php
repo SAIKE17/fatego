@@ -17,3 +17,12 @@ function nowTime() {
 function encryptPwd($pwd, $prefix = "fulishe") {
     return strtoupper(md5($prefix . $pwd));
 }
+
+/**
+ * 上传文件创建md5
+ * @return type
+ */
+function create_guid() {
+    $charid = md5(uniqid(mt_rand(), true));
+    return $charid;
+}
