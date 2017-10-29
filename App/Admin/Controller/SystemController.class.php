@@ -7,10 +7,12 @@ use Think\Controller;
 class SystemController extends BaseController {
 
     public function admin_list() {
-        echo 'alala-lsi';
+        layout(false);
+        $this->display('/System/test');
     }
     
     public function test(){
+//        layout(false);
         $this->display();
     }
 
