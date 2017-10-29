@@ -1,0 +1,21 @@
+.pic-container {
+    border: 1px solid #e5e6e7;
+    padding: 5px;
+    min-height: 130px;
+}
+
+.pic {
+    display: inline-block;
+    margin-right: 5px;
+    /*margin-top: 5px;*/
+    text-align: center;
+}
+
+.pic img {
+    width: 100px;
+    height: 100px;
+}
+
+.pic .current {
+    border: 3px solid #f60;
+}
