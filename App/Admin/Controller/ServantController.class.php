@@ -14,6 +14,13 @@ class ServantController extends BaseController{
     }
     
     public function servant_add(){
-        $this->display();
+        if(IS_POST){
+            
+            $this->error("保存英灵基本属性失败！");
+            $this->success("保存英灵基本属性成功！");
+        }else{
+            $this->display();
+        }
+        
     }
 }
