@@ -13,4 +13,14 @@ class IndexController extends BaseController {
         $this->display();
     }
 
+    /**
+     * 主界面
+     */
+    public function main() {
+        $mysql = M()->query("select version() as ver");
+
+        $this->assign('mysql_ver', $mysql[0]['ver']);
+        $this->display();
+    }
+
 }

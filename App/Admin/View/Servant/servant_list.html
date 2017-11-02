@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>英灵列表</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>将出现英灵</div>
-    </body>
-</html>
+<div class="col-sm-12">
+    <!--工具栏-->
+    <form id="toolbar" action="" method="">
+        <label>状态：</label>
+        <select name="status" class="form-control inline" style="width: 90px;vertical-align: middle;" id="status">
+            <option value="0">待审核</option>
+            <option value="1">已审核 | 通过</option>
+            <option value="2">已审核 | 未通过</option>
+            <option value="3">已废弃</option>
+        </select>    
+        <label>&nbsp;单据类型：</label>
+        <select name="bill_type"class="form-control inline" style="width: 120px;vertical-align: middle;" id="bill_type">
+            <option value="-1">全部</option>
+            <option value="0">过期报损</option>
+            <option value="1">赠品报损</option>
+        </select> 
+        <label>&nbsp;关键词：</label>
+        <input type="text" name="keywords" class="form-control inline" style="width: 200px;vertical-align: middle;" id="keywords" placeholder="请输入单号或仓库名称" >&nbsp;
+        <label>&nbsp;日期：</label>
+        <input type="text" name="begin_datetime" class="form-control inline" style="width: 160px;vertical-align: middle;" id="begin_datetime" placeholder="请选择开始日期" readonly >&nbsp;~
+        <input type="text" name="end_datetime" class="form-control inline" style="width: 160px;vertical-align: middle;" id="end_datetime" placeholder="请选择结束日期" readonly >&nbsp;
+        <a class="btn btn-success" onclick="doQuery();" ><i class="fa fa-search"></i>查询</a>
+        <a class="btn btn-primary" href="#"><i class="fa fa-plus"></i>添加</a>
+        <a class="btn btn-info" onclick="cExcel();" ><i class="fa fa-check"></i>导出</a>
+    </form>
+    <!--end 工具栏-->
+    <!--表格-->
+    <table id="lossList"></table>
+    <!--end 表格-->
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        alert("ok");
+    });
+</script>
