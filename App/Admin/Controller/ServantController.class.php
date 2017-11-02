@@ -10,7 +10,19 @@ namespace Admin\Controller;
 class ServantController extends BaseController {
 
     public function servant_list() {
-        $this->display();
+        if (IS_POST) {
+            // 构建请求参数
+            $params = [
+                'cur_page' => I('post.cur_page/d', 1),
+                'page_size' => I('post.page_size/d', 25),
+                'keywords' => I('post.keywords/s')
+            ];
+            
+            $data = D('Servant')->getList($params);
+            $this->ajaxReturn(['rows' => $data['data'], 'total' => $data['count']]);
+        } else {
+            $this->display();
+        }
     }
 
     public function servant_add() {
@@ -120,10 +132,10 @@ class ServantController extends BaseController {
             if (null == $sex) {
                 $this->error("请选择英灵性别！");
             }
-            
+
             $servantModel = D('Servant');
-            $servantData = $servantModel->where(['name'=>$name])->find();
-            if($servantData != null){
+            $servantData = $servantModel->where(['name' => $name])->find();
+            if ($servantData != null) {
                 $this->error("该英灵已存在！");
             }
 

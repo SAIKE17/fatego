@@ -1,360 +1,378 @@
-<div class="animated fadeInRight">
-    <div class="float-e-margins">
-        <div class="ibox-content">
-            <form class="form-horizontal m-t" id="servantForm">
-                <div class="form-group">
-                    <div class="alert alert-info col-sm-3 col-sm-offset-2 text-center">
-                        英灵基本属性！
-                    </div>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>添加英灵</title>
+        <link href="__HOME__/css/bootstrap.min.css" rel="stylesheet">
+        <link href="__HOME__/css/font-awesome.min.css" rel="stylesheet">
+        <link href="__HOME__/css/animate.min.css" rel="stylesheet">
+        <link href="__HOME__/css/style.min.css" rel="stylesheet">
+        <link href="__HOME__/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+        <link href="__HOME__/css/extends/img.style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="animated fadeInRight">
+            <div class="float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="servantForm">
+                        <div class="form-group">
+                            <div class="alert alert-info col-sm-3 col-sm-offset-2 text-center">
+                                英灵基本属性！
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵名称：</label>
+                            <div class="col-sm-3">
+                                <input name="sname" value="" class="form-control" type="text" placeholder="请输入英灵名称" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵等级：</label>
+                            <div class="col-sm-3">
+                                <input name="level" value="" class="form-control" type="text" placeholder="请输入英灵等级" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵星级：</label>
+                            <div class="col-sm-3">
+                                <select nane="slevel" class="form-control inline" id="slevel">
+                                    <option value="0">请选择星级</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵阵营：</label>
+                            <div class="col-sm-3">
+                                <select nane="faction" class="form-control inline" id="faction">
+                                    <option value="0">请选择阵营</option>
+                                    <option value="1">天</option>
+                                    <option value="2">地</option>
+                                    <option value="3">人</option>
+                                    <option value="4">星</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵职阶：</label>
+                            <div class="col-sm-3">
+                                <select nane="professional" class="form-control inline" id="professional">
+                                    <option value="0">请选择职阶</option>
+                                    <option value="Shielder">Shielder</option>
+                                    <option value="Saber">Saber</option>
+                                    <option value="Archer">Archer</option>
+                                    <option value="Lancer">Lancer</option>
+                                    <option value="Rider">Rider</option>
+                                    <option value="Caster">Caster</option>
+                                    <option value="Assassin">Assassin</option>
+                                    <option value="Berserker">Berserker</option>
+                                    <option value="Ruler">Ruler</option>
+                                    <option value="Avenger">Avenger</option>
+                                    <option value="Alterego">Alterego</option>
+                                    <option value="MoonCancer">MoonCancer</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵绘师：</label>
+                            <div class="col-sm-3">
+                                <input name="painter" value="" class="form-control" type="text" placeholder="请输入英灵绘师" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>受伤np率：</label>
+                            <div class="col-sm-3">
+                                <input name="attack_np" value="" class="form-control" type="text" placeholder="请输入受伤np率" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>宝具np率：</label>
+                            <div class="col-sm-3">
+                                <input name="stunt_np" value="" class="form-control" type="text" placeholder="请输入宝具np率" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵声优：</label>
+                            <div class="col-sm-3">
+                                <input name="cv" value="" class="form-control" type="text" placeholder="请输入英灵声优" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>属性值：</label>
+                            <div class="col-sm-3">
+                                <input name="attributes" value="" class="form-control" type="text" placeholder="秩序·善..." reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵性别：</label>
+                            <div class="col-sm-3">
+                                <select nane="sex" class="form-control inline" id="sex">
+                                    <option value="-1">请选择性别</option>
+                                    <option value="0">男</option>
+                                    <option value="1">女</option>
+                                    <option value="2">未知</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>所属地区：</label>
+                            <div class="col-sm-3">
+                                <input name="area" value="" class="form-control" type="text" placeholder="请输入英灵出处" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵身高：</label>
+                            <div class="col-sm-3">
+                                <input name="height" value="" class="form-control" type="text" placeholder="请输入英灵身高（cm）" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵体重：</label>
+                            <div class="col-sm-3">
+                                <input name="weight" value="" class="form-control" type="text" placeholder="请输入英灵体重（kg）" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>掉星率：</label>
+                            <div class="col-sm-3">
+                                <input name="star_drop_rate" value="" class="form-control" type="text" placeholder="请输入英灵掉星率" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>即死率：</label>
+                            <div class="col-sm-3">
+                                <input name="death_rate" value="" class="form-control" type="text" placeholder="请输入英灵攻击即死率" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>暴击权重：</label>
+                            <div class="col-sm-3">
+                                <input name="crit_weight" value="" class="form-control" type="text" placeholder="请输入暴击权重" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>成长曲线：</label>
+                            <div class="col-sm-3">
+                                <input name="growing_value" value="" class="form-control" type="text" placeholder="请输入成长曲线（凹，凸，平）" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵昵称：</label>
+                            <div class="col-sm-3">
+                                <input name="nickname" value="" class="form-control" type="text" placeholder="请输入英灵昵称" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵特性：</label>
+                            <div class="col-sm-3">
+                                <input name="characteristic" value="" class="form-control" type="text" placeholder="请输入英灵特性" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>入手途径：</label>
+                            <div class="col-sm-3">
+                                <input name="get_way" value="" class="form-control" type="text" placeholder="请输入英灵入手途径" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <a class="btn btn-primary" onclick="doEdit();">保存配置</a>
+                                <!--<a class="btn btn-white" href="/Account/user_list">取消</a>-->
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵名称：</label>
-                    <div class="col-sm-3">
-                        <input name="sname" value="" class="form-control" type="text" placeholder="请输入英灵名称" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵等级：</label>
-                    <div class="col-sm-3">
-                        <input name="level" value="" class="form-control" type="text" placeholder="请输入英灵等级" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵星级：</label>
-                    <div class="col-sm-3">
-                        <select nane="slevel" class="form-control inline" id="slevel">
-                            <option value="0">请选择星级</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵阵营：</label>
-                    <div class="col-sm-3">
-                        <select nane="faction" class="form-control inline" id="faction">
-                            <option value="0">请选择阵营</option>
-                            <option value="1">天</option>
-                            <option value="2">地</option>
-                            <option value="3">人</option>
-                            <option value="4">星</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵职阶：</label>
-                    <div class="col-sm-3">
-                        <select nane="professional" class="form-control inline" id="professional">
-                            <option value="0">请选择职阶</option>
-                            <option value="Shielder">Shielder</option>
-                            <option value="Saber">Saber</option>
-                            <option value="Archer">Archer</option>
-                            <option value="Lancer">Lancer</option>
-                            <option value="Rider">Rider</option>
-                            <option value="Caster">Caster</option>
-                            <option value="Assassin">Assassin</option>
-                            <option value="Berserker">Berserker</option>
-                            <option value="Ruler">Ruler</option>
-                            <option value="Avenger">Avenger</option>
-                            <option value="Alterego">Alterego</option>
-                            <option value="MoonCancer">MoonCancer</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵绘师：</label>
-                    <div class="col-sm-3">
-                        <input name="painter" value="" class="form-control" type="text" placeholder="请输入英灵绘师" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>受伤np率：</label>
-                    <div class="col-sm-3">
-                        <input name="attack_np" value="" class="form-control" type="text" placeholder="请输入受伤np率" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>宝具np率：</label>
-                    <div class="col-sm-3">
-                        <input name="stunt_np" value="" class="form-control" type="text" placeholder="请输入宝具np率" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵声优：</label>
-                    <div class="col-sm-3">
-                        <input name="cv" value="" class="form-control" type="text" placeholder="请输入英灵声优" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>属性值：</label>
-                    <div class="col-sm-3">
-                        <input name="attributes" value="" class="form-control" type="text" placeholder="秩序·善..." reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵性别：</label>
-                    <div class="col-sm-3">
-                        <select nane="sex" class="form-control inline" id="sex">
-                            <option value="-1">请选择性别</option>
-                            <option value="0">男</option>
-                            <option value="1">女</option>
-                            <option value="2">未知</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>所属地区：</label>
-                    <div class="col-sm-3">
-                        <input name="area" value="" class="form-control" type="text" placeholder="请输入英灵出处" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵身高：</label>
-                    <div class="col-sm-3">
-                        <input name="height" value="" class="form-control" type="text" placeholder="请输入英灵身高（cm）" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵体重：</label>
-                    <div class="col-sm-3">
-                        <input name="weight" value="" class="form-control" type="text" placeholder="请输入英灵体重（kg）" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>掉星率：</label>
-                    <div class="col-sm-3">
-                        <input name="star_drop_rate" value="" class="form-control" type="text" placeholder="请输入英灵掉星率" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>即死率：</label>
-                    <div class="col-sm-3">
-                        <input name="death_rate" value="" class="form-control" type="text" placeholder="请输入英灵攻击即死率" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>暴击权重：</label>
-                    <div class="col-sm-3">
-                        <input name="crit_weight" value="" class="form-control" type="text" placeholder="请输入暴击权重" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>成长曲线：</label>
-                    <div class="col-sm-3">
-                        <input name="growing_value" value="" class="form-control" type="text" placeholder="请输入成长曲线（凹，凸，平）" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵昵称：</label>
-                    <div class="col-sm-3">
-                        <input name="nickname" value="" class="form-control" type="text" placeholder="请输入英灵昵称" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵特性：</label>
-                    <div class="col-sm-3">
-                        <input name="characteristic" value="" class="form-control" type="text" placeholder="请输入英灵特性" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>入手途径：</label>
-                    <div class="col-sm-3">
-                        <input name="get_way" value="" class="form-control" type="text" placeholder="请输入英灵入手途径" reuqierd="required"/>
-                    </div>
-                </div>
-                <div class="hr-line-dashed"></div>
-                <div class="form-group">
-                    <div class="col-sm-3 col-sm-offset-2">
-                        <a class="btn btn-primary" onclick="doEdit();">保存配置</a>
-                        <!--<a class="btn btn-white" href="/Account/user_list">取消</a>-->
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
+        <script src="__HOME__/js/jquery.min.js"></script>
+        <script src="__HOME__/js/bootstrap.min.js"></script>
+        <script src="__HOME__/js/plugins/layer/layer.min.js"></script>
+        <script type="text/javascript">
 
-    /**
-     * 表单提交
-     * @returns {undefined}
-     */
-    function doEdit() {
-        // 验证表单相关元素
-        if (!checkForm()) {
-            return false;
-        }
-        
-        var slevel = $('#slevel').val();
-        if (slevel == 0) {
-            layer.msg('请选择英灵星级！');
-            return false;
-        }
-        var faction = $('#faction').val();
-        if (faction == 0) {
-            layer.msg('请选择阵营！');
-            return false;
-        }
-        var professional = $('#professional').val();
-        if (professional == 0) {
-            layer.msg('请选择英灵职阶！');
-            return false;
-        }
-        var sex = $('#sex').val();
-        if (sex == -1) {
-            layer.msg('请选择英灵性别！');
-            return false;
-        }
-
-        var formData = $("#servantForm").serializeArray();
-        formData.push({name: "slevel", value: slevel});
-        formData.push({name: "faction", value: faction});
-        formData.push({name: "professional", value: professional});
-        formData.push({name: "sex", value: sex});
-        
-        $.ajax({
-            url: "/admin.php/Servant/servant_add",
-            data: formData,
-            type: 'post',
-            dataType: 'json',
-            success: function (data) {
-                if (data['status'] == 1) {
-                    layer.msg(data['info']);
-                    setTimeout(function () {
-                        window.location.href=data['url'];
-                    }, 1000);
+            /**
+             * 表单提交
+             * @returns {undefined}
+             */
+            function doEdit() {
+                // 验证表单相关元素
+                if (!checkForm()) {
                     return false;
                 }
 
-                if (0 === data['status']) {
-                    layer.msg(data['info']);
+                var slevel = $('#slevel').val();
+                if (slevel == 0) {
+                    layer.msg('请选择英灵星级！');
+                    return false;
                 }
-            },
-            error: function () {
-                layer.msg('网络异常，请稍后尝试！');
-                return false;
-            }
-        });
-    }
+                var faction = $('#faction').val();
+                if (faction == 0) {
+                    layer.msg('请选择阵营！');
+                    return false;
+                }
+                var professional = $('#professional').val();
+                if (professional == 0) {
+                    layer.msg('请选择英灵职阶！');
+                    return false;
+                }
+                var sex = $('#sex').val();
+                if (sex == -1) {
+                    layer.msg('请选择英灵性别！');
+                    return false;
+                }
 
-    /**
-     * 表单验证
-     * @returns {undefined}
-     */
-    function checkForm() {        
-        var data = $('#servantForm').serializeArray();
-        var arrLen = data.length;
-        for (var i = 0; i < arrLen; i++) {
-            switch (data[i].name) {
-                case 'sname':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵名称！');
+                var formData = $("#servantForm").serializeArray();
+                formData.push({name: "slevel", value: slevel});
+                formData.push({name: "faction", value: faction});
+                formData.push({name: "professional", value: professional});
+                formData.push({name: "sex", value: sex});
+
+                $.ajax({
+                    url: "/admin.php/Servant/servant_add",
+                    data: formData,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data['status'] == 1) {
+                            layer.msg(data['info']);
+                            setTimeout(function () {
+                                window.location.href = data['url'];
+                            }, 1000);
+                            return false;
+                        }
+
+                        if (0 === data['status']) {
+                            layer.msg(data['info']);
+                        }
+                    },
+                    error: function () {
+                        layer.msg('网络异常，请稍后尝试！');
                         return false;
                     }
-                    break;
-                case 'level':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵等级！');
-                        return false;
-                    }
-                    break;
-                case 'painter':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵绘师！');
-                        return false;
-                    }
-                    break;
-                case 'attack_np':
-                    if (data[i].value == '') {
-                        layer.msg('请输入受伤np率！');
-                        return false;
-                    }
-                    break;
-                case 'stunt_np':
-                    if (data[i].value == '') {
-                        layer.msg('请输入宝具np率！');
-                        return false;
-                    }
-                    break;
-                case 'cv':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵声优！');
-                        return false;
-                    }
-                    break;
-                case 'attributes':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵属性值！');
-                        return false;
-                    }
-                    break;
-                case 'area':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵出处！');
-                        return false;
-                    }
-                    break;
-                case 'height':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵身高（cm）！');
-                        return false;
-                    }
-                    break;
-                case 'weight':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵体重（kg）！');
-                        return false;
-                    }
-                    break;
-                case 'star_drop_rate':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵掉星率！');
-                        return false;
-                    }
-                    break;
-                case 'death_rate':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵攻击即死率！');
-                        return false;
-                    }
-                    break;
-                case 'crit_weight':
-                    if (data[i].value == '') {
-                        layer.msg('请输入暴击权重！');
-                        return false;
-                    }
-                    break;
-                case 'growing_value':
-                    if (data[i].value == '') {
-                        layer.msg('请输入成长曲线（凹，凸，平）！');
-                        return false;
-                    }
-                    break;
-                case 'nickname':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵昵称！');
-                        return false;
-                    }
-                    break;
-                case 'characteristic':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵特性！');
-                        return false;
-                    }
-                    break;
-                case 'get_way':
-                    if (data[i].value == '') {
-                        layer.msg('请输入英灵入手途径！');
-                        return false;
-                    }
-                    break;
-                default:
-                    break;
+                });
             }
-        }        
-        return true;
-    }
-</script>
+
+            /**
+             * 表单验证
+             * @returns {undefined}
+             */
+            function checkForm() {
+                var data = $('#servantForm').serializeArray();
+                var arrLen = data.length;
+                for (var i = 0; i < arrLen; i++) {
+                    switch (data[i].name) {
+                        case 'sname':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵名称！');
+                                return false;
+                            }
+                            break;
+                        case 'level':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵等级！');
+                                return false;
+                            }
+                            break;
+                        case 'painter':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵绘师！');
+                                return false;
+                            }
+                            break;
+                        case 'attack_np':
+                            if (data[i].value == '') {
+                                layer.msg('请输入受伤np率！');
+                                return false;
+                            }
+                            break;
+                        case 'stunt_np':
+                            if (data[i].value == '') {
+                                layer.msg('请输入宝具np率！');
+                                return false;
+                            }
+                            break;
+                        case 'cv':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵声优！');
+                                return false;
+                            }
+                            break;
+                        case 'attributes':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵属性值！');
+                                return false;
+                            }
+                            break;
+                        case 'area':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵出处！');
+                                return false;
+                            }
+                            break;
+                        case 'height':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵身高（cm）！');
+                                return false;
+                            }
+                            break;
+                        case 'weight':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵体重（kg）！');
+                                return false;
+                            }
+                            break;
+                        case 'star_drop_rate':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵掉星率！');
+                                return false;
+                            }
+                            break;
+                        case 'death_rate':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵攻击即死率！');
+                                return false;
+                            }
+                            break;
+                        case 'crit_weight':
+                            if (data[i].value == '') {
+                                layer.msg('请输入暴击权重！');
+                                return false;
+                            }
+                            break;
+                        case 'growing_value':
+                            if (data[i].value == '') {
+                                layer.msg('请输入成长曲线（凹，凸，平）！');
+                                return false;
+                            }
+                            break;
+                        case 'nickname':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵昵称！');
+                                return false;
+                            }
+                            break;
+                        case 'characteristic':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵特性！');
+                                return false;
+                            }
+                            break;
+                        case 'get_way':
+                            if (data[i].value == '') {
+                                layer.msg('请输入英灵入手途径！');
+                                return false;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                return true;
+            }
+        </script>
+    </body>
+</html>
