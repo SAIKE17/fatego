@@ -116,13 +116,36 @@
                         field: 'area',
                         title: '所属地区',
                     }, {
-                        field: 'id',
+                        field: 'servant_id',
                         title: '操作',
                         formatter: function (value, row, index) {
                             var btns = [];
-                            btns.push("<a class='btn btn-warning btn-xs' href='/Erp/purchase_edit?id=" + value + "'>编辑</a>");
+                            btns.push("<a class='btn btn-warning btn-xs' href='admin.php/Servant/servant_edit?id=" + value + "'>编辑</a>");
                             btns.push("<a class='btn btn-danger btn-xs' onclick='doDel(" + value + ")'>删除</a>");
-                            btns.push("<a class='btn btn-primary btn-xs' href='/Erp/purchase_detail?id=" + value + "'>详情</a>");
+                            btns.push("<a class='btn btn-success btn-xs' href='admin.php/Servant/servant_detail?id=" + value + "'>详情</a>");
+                            btns.push("<div class='btn-group'>"
+                                    + "<button data-toggle='dropdown' class='btn btn-primary dropdown-toggle btn-xs'>更多<span class='caret'></span></button>"
+                                    + "<ul class='dropdown-menu pull-right'>"
+                                    + "<li><a href='/admin.php/Servant/servant_card?id=" + value + "'>配卡信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_evomateria?id=" + value + "'>再临信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_iskill?id=" + value + "'>固有技能</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_atkandhp?id=" + value + "'>双维信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_pic?id=" + value + "'>图片信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_proskill?id=" + value + "'>职阶信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_skillmaterial?id=" + value + "'>技能素材</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_stats?id=" + value + "'>能力信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_story?id=" + value + "'>故事信息</a></li>"
+                                    + "<li class='divider'></li>"
+                                    + "<li><a href='/admin.php/Servant/servant_stunt?id=" + value + "'>宝具信息</a></li>"
+                                    + "</ul></div>")
                             return btns.join(' &nbsp;');
                         }
                     }]
@@ -143,6 +166,7 @@
         function doQuery() {
             $('#servantTable').bootstrapTable("refresh");
         }
+                
     </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ class ServantController extends BaseController {
                 'page_size' => I('post.page_size/d', 25),
                 'keywords' => I('post.keywords/s')
             ];
-            
+
             $data = D('Servant')->getList($params);
             $this->ajaxReturn(['rows' => $data['data'], 'total' => $data['count']]);
         } else {
@@ -171,6 +171,71 @@ class ServantController extends BaseController {
 
             $this->success('保存英灵基本属性成功！', '/admin.php/Servant/servant_list');
         } else {
+            $this->display();
+        }
+    }
+
+    public function servant_card() {
+        if (IS_POST) {
+            $servant_id = I('post.id/d', 0);
+            if ($servant_id <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $ac_hit = I('post.a_hit/d', 0);
+            if ($ac_hit <= 0) {
+                $this->error("无效ID！");
+            }            
+            
+            $bc_hit = I('post.b_hit/d', 0);
+            if ($bc_hit <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $qc_hit = I('post.q_hit/d', 0);
+            if ($qc_hit <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $ec_hit = I('post.e_hit/d', 0);
+            if ($ec_hit <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $ac_np = I('post.a_np/f', 0);
+            if ($ac_np <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $bc_np = I('post.b_np/f', 0);
+            if ($bc_np <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $qc_np = I('post.q_np/f', 0);
+            if ($qc_np <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            $ec_np = I('post.e_np/f', 0);
+            if ($ec_np <= 0) {
+                $this->error("无效ID！");
+            }
+            
+            
+            
+        } else {
+            $id = I('get.id/d', 0);
+            if ($id <= 0) {
+                $this->error("无效ID！");
+            }
+
+            $servantData = D('Servant')->where(['id' => $id])->find();
+            if (null == $servantData) {
+                $this->error("英灵不存在！");
+            }
+
+            $this->assign('data', $servantData);
             $this->display();
         }
     }

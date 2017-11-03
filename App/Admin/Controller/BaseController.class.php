@@ -48,8 +48,9 @@ class BaseController extends Controller {
             $this->ajaxReturn(array('ret' => 0, 'msg' => '请求地址不存在或已经删除'));
         } else {
             $this->assign('404错误','404错误');
-            $this->display('/admin.php/Common/404');
+            $this->display('/Common/404');
         }
+        
     }
 
 }
