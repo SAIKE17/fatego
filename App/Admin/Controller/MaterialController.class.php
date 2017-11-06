@@ -13,7 +13,15 @@ class MaterialController extends BaseController{
         $this->display();
     }
     
+    /**
+     * 素材添加
+     */
     public function material_add(){
-        $this->display();
+        if(IS_POST){
+            
+        }else{
+            $this->display();
+        }
+        
     }
 }
