@@ -17,7 +17,7 @@
                     <!--工具栏-->
                     <div class="ibox-title" style="border-top: 1px solid #e7eaec;padding-top: 10px;">
                         <label>&nbsp;关键词：</label>
-                        <input type="text" name="keywords" class="form-control inline" style="width: 200px;" id="keywords" placeholder="请输入单号或仓库名称" >&nbsp;                            
+                        <input type="text" name="keywords" class="form-control inline" style="width: 200px;" id="keywords" placeholder="请输入英灵名称" >&nbsp;                            
                         <a class="btn btn-success" onclick="doQuery();" ><i class="fa fa-search"></i>查询</a>
                         <a class="btn btn-primary" href="/admin.php/Servant/servant_add"><i class="fa fa-plus"></i>添加</a>
                     </div>
@@ -120,9 +120,9 @@
                         title: '操作',
                         formatter: function (value, row, index) {
                             var btns = [];
-                            btns.push("<a class='btn btn-warning btn-xs' href='admin.php/Servant/servant_edit?id=" + value + "'>编辑</a>");
+                            btns.push("<a class='btn btn-warning btn-xs' href='/admin.php/Servant/servant_edit?id=" + value + "'>编辑</a>");
                             btns.push("<a class='btn btn-danger btn-xs' onclick='doDel(" + value + ")'>删除</a>");
-                            btns.push("<a class='btn btn-success btn-xs' href='admin.php/Servant/servant_detail?id=" + value + "'>详情</a>");
+                            btns.push("<a class='btn btn-success btn-xs' href='/admin.php/Servant/servant_detail?id=" + value + "'>详情</a>");
                             btns.push("<div class='btn-group'>"
                                     + "<button data-toggle='dropdown' class='btn btn-primary dropdown-toggle btn-xs'>更多<span class='caret'></span></button>"
                                     + "<ul class='dropdown-menu pull-right'>"

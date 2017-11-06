@@ -9,6 +9,9 @@ namespace Admin\Controller;
  */
 class ServantController extends BaseController {
 
+    /**
+     * 英灵列表
+     */
     public function servant_list() {
         if (IS_POST) {
             // 构建请求参数
@@ -25,6 +28,9 @@ class ServantController extends BaseController {
         }
     }
 
+    /**
+     * 添加英灵基本信息
+     */
     public function servant_add() {
         if (IS_POST) {
             //接受参数并且验证
@@ -175,56 +181,118 @@ class ServantController extends BaseController {
         }
     }
 
+    /**
+     * 添加英灵配卡信息
+     */
     public function servant_card() {
         if (IS_POST) {
             $servant_id = I('post.id/d', 0);
             if ($servant_id <= 0) {
                 $this->error("无效ID！");
             }
-            
+
+            $servant_name = I('post.sname/s', "");
+            if (null == $servant_name) {
+                $this->error("无效英灵名称！");
+            }
+            $servantModel = D('Servant');
+            $servantData = $servantModel->where(['servant_id' => $servant_id, 'name' => $servant_name])->find();
+            if (null == $servantData) {
+                $this->error("查无此人！");
+            }
+
+            $type = I('post.type/s', '');
+            if (null == $type) {
+                $this->error("请输入配卡类型！");
+            }
+
             $ac_hit = I('post.a_hit/d', 0);
             if ($ac_hit <= 0) {
-                $this->error("无效ID！");
-            }            
-            
+                $this->error("请输入Arts卡hit数！");
+            }
+
             $bc_hit = I('post.b_hit/d', 0);
             if ($bc_hit <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Buster卡hit数！");
             }
-            
+
             $qc_hit = I('post.q_hit/d', 0);
             if ($qc_hit <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Quick卡hit数！");
             }
-            
+
             $ec_hit = I('post.e_hit/d', 0);
             if ($ec_hit <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Extra卡hit数！");
             }
-            
+
             $ac_np = I('post.a_np/f', 0);
             if ($ac_np <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Arts卡np率！");
             }
-            
+
             $bc_np = I('post.b_np/f', 0);
             if ($bc_np <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Buster卡np率！");
             }
-            
+
             $qc_np = I('post.q_np/f', 0);
             if ($qc_np <= 0) {
-                $this->error("无效ID！");
+                $this->error("请输入Quick卡np率！");
             }
-            
+
             $ec_np = I('post.e_np/f', 0);
             if ($ec_np <= 0) {
+                $this->error("请输入Extra卡np率！");
+            }
+
+            $cardModel = D('ServantCard');
+            $card = $cardModel->where(['servant_id' => $servant_id])->find();
+            if (null != $card) {
+                $this->error("配卡信息已存在，不能重复添加！");
+            }
+
+            $res = $cardModel->add([
+                'type' => $type,
+                'ac_hit' => $ac_hit,
+                'bc_hit' => $bc_hit,
+                'qc_hit' => $qc_hit,
+                'ec_hit' => $ec_hit,
+                'ac_np' => $ac_np,
+                'bc_np' => $bc_np,
+                'qc_np' => $qc_np,
+                'ec_np' => $ec_np,
+                'servant_id' => $servant_id
+            ]);
+
+            if (false === $res) {
+                $this->error("添加配卡失败！");
+            }
+
+            $this->success($servant_name . "添加配卡成功", "/admin.php/Servant/servant_list");
+        } else {
+            $id = I('get.id/d', 0);
+            if ($id <= 0) {
                 $this->error("无效ID！");
             }
+
+            $servantData = D('Servant')->where(['id' => $id])->find();
+            if (null == $servantData) {
+                $this->error("英灵不存在！");
+            }
+
+            $this->assign('data', $servantData);
+            $this->display();
+        }
+    }
+    
+    /**
+     * 添加英灵再临信息
+     */
+    public function servant_evomateria(){
+        if(IS_POST){
             
-            
-            
-        } else {
+        }else{
             $id = I('get.id/d', 0);
             if ($id <= 0) {
                 $this->error("无效ID！");
