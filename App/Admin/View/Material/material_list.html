@@ -1,11 +1,136 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>素材列表</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>素材列表</title>
+        <link href="__HOME__/css/bootstrap.min.css" rel="stylesheet">
+        <link href="__HOME__/css/font-awesome.min.css" rel="stylesheet">        
+        <link href="__HOME__/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+        <link href="__HOME__/css/animate.min.css" rel="stylesheet">
+        <link href="__HOME__/css/style.min.css" rel="stylesheet">
     </head>
     <body>
-        <div>将出现素材</div>
-    </body>
+        <div class="animated fadeInRight">
+            <div class="float-e-margins">
+                <div class="col-sm-12">
+                    <!--工具栏-->
+                    <div class="ibox-title" style="border-top: 1px solid #e7eaec;padding-top: 10px;">
+                        <label>&nbsp;关键词：</label>
+                        <input type="text" name="keywords" class="form-control inline" style="width: 200px;" id="keywords" placeholder="请输入素材名称" >&nbsp;                            
+                        <a class="btn btn-success" onclick="doQuery();" ><i class="fa fa-search"></i>查询</a>
+                        <a class="btn btn-primary" href="/admin.php/Material/material_add"><i class="fa fa-plus"></i>添加</a>
+                    </div>
+                    <!--end 工具栏-->
+                    <div class="ibox-content">
+                        <!--表格-->
+                        <table id="materialTable"></table>
+                        <!--end 表格-->
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </div>   
+    <script src="__HOME__/js/jquery.min.js"></script>
+    <script src="__HOME__/js/bootstrap.min.js"></script>    
+    <script src="__HOME__/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="__HOME__/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="__HOME__/js/plugins/layer/layer.min.js"></script>
+    <script type="text/javascript">
+                            $(function () {
+                                initTable();
+                            });
+
+                            document.onkeydown = function (e) {
+                                e = e || event;
+                                if (e.keyCode == 13) { // 回车键
+                                    doQuery();
+                                }
+                            };
+
+                            function initTable() {
+                                $('#materialTable').bootstrapTable({
+                                    cache: false,
+                                    toolbar: '#toolbar',
+                                    url: "{:U('/admin.php/Material/material_list')}",
+                                    height: $(window).height(),
+                                    width: $(window).width(),
+                                    uniqueId: "id", //每一行的唯一标识，一般为主键列
+                                    silent: true,
+                                    showRefresh: false,
+                                    showColumns: false,
+                                    queryParams: queryParams,
+                                    columns: [
+                                        {
+                                            title: 'ID',
+                                            formatter: function (value, row, index) {
+                                                return index + 1;
+                                            }
+                                        }, {
+                                            field: 'name',
+                                            title: '名称'
+                                        }, {
+                                            field: 'pic',
+                                            title: '图片',
+                                            formatter: function (value, row, index) {
+                                                console.log(value);
+                                                return "<img src='" + value + "' width='100' height='100' />";
+                                            }
+                                        }, {
+                                            field: 'type',
+                                            title: '类型',
+                                            formatter: function (value, row, index) {
+                                                if (value == 1) {
+                                                    return '金箱子';
+                                                } else if (value == 2) {
+                                                    return '银箱子';
+                                                } else if (value == 3) {
+                                                    return '铜箱子';
+                                                } else {
+                                                    return '未知';
+                                                }
+                                            }
+                                        }, {
+                                            field: 'fallen_place',
+                                            title: '掉落地点'
+                                        }, {
+                                            field: 'effect',
+                                            title: '作用'
+                                        }, {
+                                            field: 'introduction',
+                                            title: '简介',
+                                            formatter: function (value, row, index) {
+                                                return '略';
+                                            }
+                                        }, {
+                                            field: 'material_id',
+                                            title: '操作',
+                                            formatter: function (value, row, index) {
+                                                var btns = [];
+                                                btns.push("<a class='btn btn-warning btn-xs' href='/admin.php/Material/material_edit?id=" + value + "'>编辑</a>");
+                                                btns.push("<a class='btn btn-danger btn-xs' onclick='doDel(" + value + ")'>删除</a>");
+                                                btns.push("<a class='btn btn-success btn-xs' href='/admin.php/Material/material_detail?id=" + value + "'>详情</a>");
+                                                return btns.join(' &nbsp;');
+                                            }
+                                        }]
+                                });
+                            }
+
+                            // 请求参数
+                            function queryParams(params) {
+                                var param = {
+                                    page_size: params.pageSize,
+                                    cur_page: params.pageNumber,
+                                    keywords: $('#keywords').val()
+                                };
+
+                                return param;
+                            }
+
+                            function doQuery() {
+                                $('#materialTable').bootstrapTable("refresh");
+                            }
+
+    </script>
+</body>
 </html>

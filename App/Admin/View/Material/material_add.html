@@ -8,12 +8,14 @@
         <link href="__HOME__/css/font-awesome.min.css" rel="stylesheet">
         <link href="__HOME__/css/animate.min.css" rel="stylesheet">
         <link href="__HOME__/css/style.min.css" rel="stylesheet">
+        <link href="__HOME__/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+        <link href="__HOME__/css/extends/img.style.css" rel="stylesheet">
     </head>
     <body>
         <div class="animated fadeInRight">
             <div class="float-e-margins">
                 <div class="ibox-content">
-                    <form class="form-horizontal m-t" id="servantForm">
+                    <form class="form-horizontal m-t" id="materialForm">
                         <div class="form-group">
                             <div class="alert alert-info col-sm-3 col-sm-offset-2 text-center">
                                 素材信息！
@@ -22,19 +24,22 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>素材名称：</label>
                             <div class="col-sm-3">
-                                <input name="sname" value="" class="form-control" type="text" placeholder="请输入英灵名称" reuqierd="required"/>
+                                <input name="mname" value="" class="form-control" type="text" placeholder="请输入素材名称" reuqierd="required"/>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>素材图片：</label>
                             <div class="col-sm-3">
-                                <input name="level" value="" class="form-control" type="text" placeholder="请输入英灵等级" reuqierd="required"/>
+                                <div id="filePicker" >上传图片</div>
+                                <div id="img_list" class="pic-container">
+                                    
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>掉落类型：</label>
                             <div class="col-sm-3">
-                                <select nane="slevel" class="form-control inline" id="slevel">
+                                <select nane="type" class="form-control inline" id="type">
                                     <option value="0">请选择箱子等级</option>
                                     <option value="1">金箱子</option>
                                     <option value="2">银箱子</option>
@@ -43,21 +48,21 @@
                             </div>
                         </div>                        
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵昵称：</label>
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>掉落地点：</label>
                             <div class="col-sm-3">
-                                <input name="nickname" value="" class="form-control" type="text" placeholder="请输入英灵昵称" reuqierd="required"/>
+                                <input name="fallen_place" value="" class="form-control" type="text" placeholder="请输入掉落地点" reuqierd="required"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>英灵特性：</label>
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>素材作用：</label>
                             <div class="col-sm-3">
-                                <input name="characteristic" value="" class="form-control" type="text" placeholder="请输入英灵特性" reuqierd="required"/>
+                                <input name="effect" value="" class="form-control" type="text" placeholder="请输入素材作用" reuqierd="required"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>入手途径：</label>
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>素材简介：</label>
                             <div class="col-sm-3">
-                                <input name="get_way" value="" class="form-control" type="text" placeholder="请输入英灵入手途径" reuqierd="required"/>
+                                <textarea name="intro" class="form-control" placeholder="请输入英灵入手途径" style="height:100px;"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -73,7 +78,56 @@
         <script src="__HOME__/js/jquery.min.js"></script>
         <script src="__HOME__/js/bootstrap.min.js"></script>
         <script src="__HOME__/js/plugins/layer/layer.min.js"></script>
+        <script src="__HOME__/js/plugins/webuploader/webuploader.min.js"></script>
         <script type="text/javascript">
+            var uploader;
+            var settings = {
+                auto: true,
+                pick: {
+                    id: '#filePicker',
+                    label: '点击选择图片'
+                },
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/png,image/jpg'
+                },
+
+                disableGlobalDnd: true,
+                chunked: true,
+                server: '/admin.php/Common/upload',
+                duplicate: true,
+                fileNumLimit: 1,
+                fileSizeLimit: 20 * 1024 * 1024, // 200 M
+                fileSingleSizeLimit: 2 * 1024 * 1024    // 50 M
+            };
+
+            $(function () {
+                initUploader();
+            });
+
+            function initUploader() {
+                uploader = WebUploader.create(settings);
+                uploader.on('uploadSuccess', function (file, res) {
+                    uploadSuccess(file, res);
+                    uploader.removeFile(file);
+                });
+
+                uploader.on('uploadError', function (file) {
+                    uploader.removeFile(file);
+                    layer.msg('文件上传失败！');
+                });
+            }
+
+            function uploadSuccess(file, res) {
+                for (var i = 0; i < res.files.length; i++) {
+                    $('#img_list').append('<span class="pic" data-id="' + res.files[i].id + '">'
+                            + '<img src="/Upload/' + res.files[i].url + '" width="100" height="100">'
+                            + '<br><a class="text-danger" href="javascript:void(0)" onclick="$(this).parent().remove();">删除</a>'
+                            + '</span>');
+                }
+                $('#filePicker').hide();
+            }
 
             /**
              * 表单提交
@@ -85,35 +139,23 @@
                     return false;
                 }
 
-                var slevel = $('#slevel').val();
-                if (slevel == 0) {
-                    layer.msg('请选择英灵星级！');
-                    return false;
-                }
-                var faction = $('#faction').val();
-                if (faction == 0) {
-                    layer.msg('请选择阵营！');
-                    return false;
-                }
-                var professional = $('#professional').val();
-                if (professional == 0) {
-                    layer.msg('请选择英灵职阶！');
-                    return false;
-                }
-                var sex = $('#sex').val();
-                if (sex == -1) {
-                    layer.msg('请选择英灵性别！');
+                var type = $('#type').val();
+                if (type == 0) {
+                    layer.msg('请选择掉落箱子等级！');
                     return false;
                 }
 
-                var formData = $("#servantForm").serializeArray();
-                formData.push({name: "slevel", value: slevel});
-                formData.push({name: "faction", value: faction});
-                formData.push({name: "professional", value: professional});
-                formData.push({name: "sex", value: sex});
+                var img = $('#img_list .pic').find('img').attr('src');
+                if (typeof (img) == 'undefined') {
+                    return false;
+                }
+
+                var formData = $("#materialForm").serializeArray();
+                formData.push({name: "type", value: type});
+                formData.push({name: "img", value: img});
 
                 $.ajax({
-                    url: "/admin.php/Servant/servant_add",
+                    url: "/admin.php/Material/material_add",
                     data: formData,
                     type: 'post',
                     dataType: 'json',
@@ -142,109 +184,31 @@
              * @returns {undefined}
              */
             function checkForm() {
-                var data = $('#servantForm').serializeArray();
+                var data = $('#materialForm').serializeArray();
                 var arrLen = data.length;
                 for (var i = 0; i < arrLen; i++) {
                     switch (data[i].name) {
-                        case 'sname':
+                        case 'mname':
                             if (data[i].value == '') {
-                                layer.msg('请输入英灵名称！');
+                                layer.msg('请输入素材名称！');
                                 return false;
                             }
                             break;
-                        case 'level':
+                        case 'fallen_place':
                             if (data[i].value == '') {
-                                layer.msg('请输入英灵等级！');
+                                layer.msg('请输入掉落地点！');
                                 return false;
                             }
                             break;
-                        case 'painter':
+                        case 'effect':
                             if (data[i].value == '') {
-                                layer.msg('请输入英灵绘师！');
+                                layer.msg('请输入素材作用！');
                                 return false;
                             }
                             break;
-                        case 'attack_np':
+                        case 'intro':
                             if (data[i].value == '') {
-                                layer.msg('请输入受伤np率！');
-                                return false;
-                            }
-                            break;
-                        case 'stunt_np':
-                            if (data[i].value == '') {
-                                layer.msg('请输入宝具np率！');
-                                return false;
-                            }
-                            break;
-                        case 'cv':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵声优！');
-                                return false;
-                            }
-                            break;
-                        case 'attributes':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵属性值！');
-                                return false;
-                            }
-                            break;
-                        case 'area':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵出处！');
-                                return false;
-                            }
-                            break;
-                        case 'height':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵身高（cm）！');
-                                return false;
-                            }
-                            break;
-                        case 'weight':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵体重（kg）！');
-                                return false;
-                            }
-                            break;
-                        case 'star_drop_rate':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵掉星率！');
-                                return false;
-                            }
-                            break;
-                        case 'death_rate':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵攻击即死率！');
-                                return false;
-                            }
-                            break;
-                        case 'crit_weight':
-                            if (data[i].value == '') {
-                                layer.msg('请输入暴击权重！');
-                                return false;
-                            }
-                            break;
-                        case 'growing_value':
-                            if (data[i].value == '') {
-                                layer.msg('请输入成长曲线（凹，凸，平）！');
-                                return false;
-                            }
-                            break;
-                        case 'nickname':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵昵称！');
-                                return false;
-                            }
-                            break;
-                        case 'characteristic':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵特性！');
-                                return false;
-                            }
-                            break;
-                        case 'get_way':
-                            if (data[i].value == '') {
-                                layer.msg('请输入英灵入手途径！');
+                                layer.msg('请输入素材简介！');
                                 return false;
                             }
                             break;
