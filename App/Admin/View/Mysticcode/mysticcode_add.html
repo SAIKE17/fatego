@@ -1,11 +1,316 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>添加礼装</title>
-        <meta charset="UTF-8">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>添加礼装</title>
+        <link href="__HOME__/css/bootstrap.min.css" rel="stylesheet">
+        <link href="__HOME__/css/font-awesome.min.css" rel="stylesheet">
+        <link href="__HOME__/css/animate.min.css" rel="stylesheet">
+        <link href="__HOME__/css/style.min.css" rel="stylesheet">
+        <link href="__HOME__/css/plugins/webuploader/webuploader.css" rel="stylesheet">
+        <link href="__HOME__/css/extends/img.style.css" rel="stylesheet">
     </head>
     <body>
-        <div>将添加礼装</div>
+        <div class="animated fadeInRight">
+            <div class="float-e-margins">
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="mcForm">
+                        <div class="form-group">
+                            <div class="alert alert-info col-sm-3 col-sm-offset-2 text-center">
+                                礼装信息！
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装名称：</label>
+                            <div class="col-sm-3">
+                                <input name="mname" value="" class="form-control" type="text" placeholder="请输入礼装名称" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装图片：</label>
+                            <div class="col-sm-3">
+                                <div id="filePicker" >上传图片</div>
+                                <div id="img_list" class="pic-container">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>缩略图：</label>
+                            <div class="col-sm-3">
+                                <div id="filePicker2" >上传图片</div>
+                                <div id="img_list2" class="pic-container">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装等级：</label>
+                            <div class="col-sm-3">
+                                <select nane="level" class="form-control inline" id="level">
+                                    <option value="0">请选择礼装星级</option>
+                                    <option value="1">⭐</option>
+                                    <option value="2">⭐⭐</option>
+                                    <option value="3">⭐⭐⭐</option>
+                                    <option value="4">⭐⭐⭐⭐</option>
+                                    <option value="5">⭐⭐⭐⭐⭐</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>cost：</label>
+                            <div class="col-sm-3">
+                                <select nane="cost" class="form-control inline" id="cost">
+                                    <option value="0">请选择礼装cost</option>
+                                    <option value="1">1</option>
+                                    <option value="3">3</option>
+                                    <option value="5">5</option>
+                                    <option value="9">9</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>攻击力：</label>
+                            <div class="col-sm-1">
+                                <input name="bas_atk" value="" class="form-control" type="text" placeholder="基础攻击力" reuqierd="required"/>
+                            </div>
+                            <label class="col-sm-1 control-label">最大攻击力：</label>
+                            <div class="col-sm-1">
+                                <input name="max_atk" value="" class="form-control" type="text" placeholder="最大攻击力" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>生命值：</label>
+                            <div class="col-sm-1">
+                                <input name="bas_hp" value="" class="form-control" type="text" placeholder="基础生命值" reuqierd="required"/>
+                            </div>
+                            <label class="col-sm-1 control-label">最大生命值：</label>
+                            <div class="col-sm-1">
+                                <input name="max_hp" value="" class="form-control" type="text" placeholder="最大生命值" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装作用：</label>
+                            <div class="col-sm-3">
+                                <input name="effect" value="" class="form-control" type="text" placeholder="请输入礼装作用" reuqierd="required"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装简介：</label>
+                            <div class="col-sm-3">
+                                <textarea name="intro" class="form-control" placeholder="请输入英灵入手途径" style="height:100px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-offset-2">
+                                <a class="btn btn-primary" onclick="doEdit();">保存配置</a>
+                                <a class="btn btn-white" href="/admin.php/Servant/servant_list">　取消　</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="__HOME__/js/jquery.min.js"></script>
+        <script src="__HOME__/js/bootstrap.min.js"></script>
+        <script src="__HOME__/js/plugins/layer/layer.min.js"></script>
+        <script src="__HOME__/js/plugins/webuploader/webuploader.min.js"></script>
+        <script type="text/javascript">
+            var uploader;
+            var settings = {
+                auto: true,
+                pick: {
+                    id: '#filePicker',
+                    label: '点击选择图片'
+                },
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/png,image/jpg'
+                },
+
+                disableGlobalDnd: true,
+                chunked: true,
+                server: '/admin.php/Common/upload',
+                duplicate: true,
+                fileNumLimit: 1,
+                fileSizeLimit: 20 * 1024 * 1024, // 200 M
+                fileSingleSizeLimit: 2 * 1024 * 1024    // 50 M
+            };
+            var uploader2;
+            var settings2 = {
+                auto: true,
+                pick: {
+                    id: '#filePicker2',
+                    label: '点击选择图片'
+                },
+                accept: {
+                    title: 'Images',
+                    extensions: 'gif,jpg,jpeg,bmp,png',
+                    mimeTypes: 'image/png,image/jpg'
+                },
+
+                disableGlobalDnd: true,
+                chunked: true,
+                server: '/admin.php/Common/upload',
+                duplicate: true,
+                fileNumLimit: 1,
+                fileSizeLimit: 20 * 1024 * 1024, // 200 M
+                fileSingleSizeLimit: 2 * 1024 * 1024    // 50 M
+            };
+
+            $(function () {
+                initUploader();
+                initUploader2();
+            });
+
+            function initUploader() {
+                uploader = WebUploader.create(settings);
+                uploader.on('uploadSuccess', function (file, res) {
+                    uploadSuccess(file, res);
+                    uploader.removeFile(file);
+                });
+
+                uploader.on('uploadError', function (file) {
+                    uploader.removeFile(file);
+                    layer.msg('文件上传失败！');
+                });
+            }
+
+            function uploadSuccess(file, res) {
+                for (var i = 0; i < res.files.length; i++) {
+                    $('#img_list').append('<span class="pic" data-id="' + res.files[i].id + '">'
+                            + '<img src="/Upload/' + res.files[i].url + '" width="100" height="100">'
+                            + '<br><a class="text-danger" href="javascript:void(0)" onclick="picDel(this)">删除</a>'
+                            + '</span>');
+                }
+                $('#filePicker').hide();
+            }
+            
+            function picDel(obj){
+                $(obj).parent().remove();
+                $('#filePicker').show();
+            }
+            
+            function initUploader2() {
+                uploader2 = WebUploader.create(settings2);
+                uploader2.on('uploadSuccess', function (file, res) {
+                    uploadSuccess2(file, res);
+                    uploader2.removeFile(file);
+                });
+
+                uploader2.on('uploadError', function (file) {
+                    uploader2.removeFile(file);
+                    layer.msg('文件上传失败！');
+                });
+            }
+
+            function uploadSuccess2(file, res) {
+                for (var i = 0; i < res.files.length; i++) {
+                    $('#img_list2').append('<span class="pic" data-id="' + res.files[i].id + '">'
+                            + '<img src="/Upload/' + res.files[i].url + '" width="100" height="100">'
+                            + '<br><a class="text-danger" href="javascript:void(0)" onclick="picDel2(this)">删除</a>'
+                            + '</span>');
+                }
+                $('#filePicker2').hide();
+            }
+            
+            function picDel2(obj){
+                $(obj).parent().remove();
+                $('#filePicker2').show();
+            }
+
+            /**
+             * 表单提交
+             * @returns {undefined}
+             */
+            function doEdit() {
+                // 验证表单相关元素
+                if (!checkForm()) {
+                    return false;
+                }
+
+                var type = $('#type').val();
+                if (type == 0) {
+                    layer.msg('请选择掉落箱子等级！');
+                    return false;
+                }
+
+                var img = $('#img_list .pic').find('img').attr('src');
+                if (typeof (img) == 'undefined') {
+                    return false;
+                }
+
+                var formData = $("#mcForm").serializeArray();
+                formData.push({name: "type", value: type});
+                formData.push({name: "img", value: img});
+
+                $.ajax({
+                    url: "/admin.php/Material/material_add",
+                    data: formData,
+                    type: 'post',
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data['status'] == 1) {
+                            layer.msg(data['info']);
+                            setTimeout(function () {
+                                window.location.href = data['url'];
+                            }, 1000);
+                            return false;
+                        }
+
+                        if (0 === data['status']) {
+                            layer.msg(data['info']);
+                        }
+                    },
+                    error: function () {
+                        layer.msg('网络异常，请稍后尝试！');
+                        return false;
+                    }
+                });
+            }
+
+            /**
+             * 表单验证
+             * @returns {undefined}
+             */
+            function checkForm() {
+                var data = $('#mcForm').serializeArray();
+                var arrLen = data.length;
+                for (var i = 0; i < arrLen; i++) {
+                    switch (data[i].name) {
+                        case 'mname':
+                            if (data[i].value == '') {
+                                layer.msg('请输入礼装名称！');
+                                return false;
+                            }
+                            break;
+                        case 'fallen_place':
+                            if (data[i].value == '') {
+                                layer.msg('请输入掉落地点！');
+                                return false;
+                            }
+                            break;
+                        case 'effect':
+                            if (data[i].value == '') {
+                                layer.msg('请输入礼装作用！');
+                                return false;
+                            }
+                            break;
+                        case 'intro':
+                            if (data[i].value == '') {
+                                layer.msg('请输入礼装简介！');
+                                return false;
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                return true;
+            }
+        </script>
     </body>
 </html>
