@@ -32,7 +32,7 @@
                             <div class="col-sm-3">
                                 <div id="filePicker" >上传图片</div>
                                 <div id="img_list" class="pic-container">
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -41,14 +41,14 @@
                             <div class="col-sm-3">
                                 <div id="filePicker2" >上传图片</div>
                                 <div id="img_list2" class="pic-container">
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装等级：</label>
                             <div class="col-sm-3">
-                                <select nane="level" class="form-control inline" id="level">
+                                <select name="level" class="form-control inline" id="level">
                                     <option value="0">请选择礼装星级</option>
                                     <option value="1">⭐</option>
                                     <option value="2">⭐⭐</option>
@@ -61,7 +61,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>cost：</label>
                             <div class="col-sm-3">
-                                <select nane="cost" class="form-control inline" id="cost">
+                                <select name="cost" class="form-control inline" id="cost">
                                     <option value="0">请选择礼装cost</option>
                                     <option value="1">1</option>
                                     <option value="3">3</option>
@@ -89,12 +89,6 @@
                             <label class="col-sm-1 control-label">最大生命值：</label>
                             <div class="col-sm-1">
                                 <input name="max_hp" value="" class="form-control" type="text" placeholder="最大生命值" reuqierd="required"/>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-2 control-label"><em class="text-danger">*&nbsp;</em>礼装作用：</label>
-                            <div class="col-sm-3">
-                                <input name="effect" value="" class="form-control" type="text" placeholder="请输入礼装作用" reuqierd="required"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -188,12 +182,12 @@
                 }
                 $('#filePicker').hide();
             }
-            
-            function picDel(obj){
+
+            function picDel(obj) {
                 $(obj).parent().remove();
                 $('#filePicker').show();
             }
-            
+
             function initUploader2() {
                 uploader2 = WebUploader.create(settings2);
                 uploader2.on('uploadSuccess', function (file, res) {
@@ -216,8 +210,8 @@
                 }
                 $('#filePicker2').hide();
             }
-            
-            function picDel2(obj){
+
+            function picDel2(obj) {
                 $(obj).parent().remove();
                 $('#filePicker2').show();
             }
@@ -232,23 +226,38 @@
                     return false;
                 }
 
-                var type = $('#type').val();
-                if (type == 0) {
-                    layer.msg('请选择掉落箱子等级！');
+                var level = $('#level').val();
+                if (level == 0) {
+                    layer.msg('请选择礼装星级！');
                     return false;
                 }
 
-                var img = $('#img_list .pic').find('img').attr('src');
-                if (typeof (img) == 'undefined') {
+                var cost = $('#cost').val();
+                if (cost == 0) {
+                    layer.msg('请选择礼装cost！');
+                    return false;
+                }
+
+                var img1 = $('#img_list .pic').find('img').attr('src');
+                if (typeof (img1) == 'undefined') {
+                    layer.msg('请选择礼装图片！');
+                    return false;
+                }
+
+                var img2 = $('#img_list2 .pic').find('img').attr('src');
+                if (typeof (img2) == 'undefined') {
+                    layer.msg('请选择礼装缩略图！');
                     return false;
                 }
 
                 var formData = $("#mcForm").serializeArray();
-                formData.push({name: "type", value: type});
-                formData.push({name: "img", value: img});
+                formData.push({name: "level", value: level});
+                formData.push({name: "img1", value: img1});
+                formData.push({name: "cost", value: cost});
+                formData.push({name: "img2", value: img2});
 
                 $.ajax({
-                    url: "/admin.php/Material/material_add",
+                    url: "/admin.php/Mysticcode/mysticcode_add",
                     data: formData,
                     type: 'post',
                     dataType: 'json',
@@ -287,15 +296,27 @@
                                 return false;
                             }
                             break;
-                        case 'fallen_place':
+                        case 'bas_atk':
                             if (data[i].value == '') {
-                                layer.msg('请输入掉落地点！');
+                                layer.msg('请输入基础攻击力！');
                                 return false;
                             }
                             break;
-                        case 'effect':
+                        case 'max_atk':
                             if (data[i].value == '') {
-                                layer.msg('请输入礼装作用！');
+                                layer.msg('请输入最大攻击力！');
+                                return false;
+                            }
+                            break;
+                        case 'bas_np':
+                            if (data[i].value == '') {
+                                layer.msg('请输入基础生命值！');
+                                return false;
+                            }
+                            break;
+                        case 'max_np':
+                            if (data[i].value == '') {
+                                layer.msg('请输入最大生命值！');
                                 return false;
                             }
                             break;
