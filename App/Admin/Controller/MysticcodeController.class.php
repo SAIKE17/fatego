@@ -10,7 +10,20 @@ namespace Admin\Controller;
 class MysticcodeController extends BaseController {
 
     public function mysticcode_list() {
-        $this->display();
+        if(IS_POST){
+            // 构建请求参数
+            $params = [
+                'cur_page' => I('post.cur_page/d', 1),
+                'page_size' => I('post.page_size/d', 25),
+                'keywords' => I('post.keywords/s')
+            ];
+
+            $data = D('MysticCode')->getList($params);
+            $this->ajaxReturn(['rows' => $data['data'], 'total' => $data['count']]);
+        }else{
+            $this->display();
+        }
+        
     }
 
     public function mysticcode_add() {
@@ -45,25 +58,45 @@ class MysticcodeController extends BaseController {
             if ($bas_atk <= 0 || $max_atk <= 0) {
                 $this->error("请输入正确的攻击力数值！");
             }
-            
-            if($bas_atk < $max_atk){
+
+            if ($bas_atk > $max_atk) {
                 $this->error("最大攻击力必须大于基础攻击力！");
             }
-            
+
             $bas_hp = I('post.bas_hp/d', 0);
             $max_hp = I('post.max_hp/d', 0);
             if ($bas_hp <= 0 || $max_hp <= 0) {
                 $this->error("请输入正确的生命值数值！");
             }
-            
-            if($bas_hp < $max_hp){
+
+            if ($bas_hp > $max_hp) {
                 $this->error("最大生命值必须大于基础生命值！");
             }
 
+            $intro = I('post.intro/s', '');
+            if (null == $intro) {
+                $this->error("请输入英灵入手途径");
+            }
 
-
-            $this->error("添加礼装信息失败！");
-            $this->success("添加礼装信息成功！");
+            $mcModel = D('MysticCode');
+            $mcRet = $mcModel->add([
+                'name' => $name,
+                'level' => $level,
+                'pic' => $img1,
+                'thumb' => $img2,
+                'cost' => $cost,
+                'bas_hp' => $bas_hp,
+                'bas_atk' => $bas_atk,
+                'max_hp' => $max_hp,
+                'max_atk' => $max_atk,
+                'skill_explain' => $intro
+            ]);
+            
+            if(false === $mcRet){
+                $this->error("添加礼装信息失败！");
+            }
+            
+            $this->success("添加礼装信息成功！","/admin.php/Myticcode/mysticcode_list");
         } else {
             $this->display();
         }
